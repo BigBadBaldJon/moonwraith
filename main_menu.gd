@@ -33,6 +33,8 @@ const REMAPPABLE_ACTIONS: Array[Dictionary] = [
 var action_buttons: Dictionary = {}
 var remapping_action: StringName = &""
 
+@onready var options_back_button: Button = $CenterContainer/OptionsPanel/VBox/BackButton
+
 
 func _ready() -> void:
 	get_tree().paused = false
