@@ -1,0 +1,174 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_5tp20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.93, 0.95, 0.99, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.34, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.22, 0.31, 0.52, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.52, 0.74, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.28, 0.38, 0.63, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.67, 0.88, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.17, 0.25, 0.42, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.45, 0.66, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5tp20")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.06, 0.1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "MoonWraiths"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Survive each night. Build. Harvest. Defend."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.14, 0.16, 0.22, 1)
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Play"
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Options"
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Quit"
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+
+[node name="OptionsPanel" type="PanelContainer" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/OptionsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="OptionsTitle" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="FullscreenCheck" type="CheckButton" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Fullscreen"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 6.0
+step = 1.0
+value = 0.0
+
+[node name="VolumeValueLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume: 0 dB"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="BackButton" type="Button" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Back"
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
