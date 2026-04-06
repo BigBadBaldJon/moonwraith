@@ -41,7 +41,6 @@ func _ready() -> void:
 func initialize_visuals() -> void:
 	build_organic_blocks()
 	visuals_initialized = true
-	build_organic_blocks()
 	update_visual()
 
 
@@ -74,6 +73,7 @@ func set_resource_tier(name: String) -> void:
 		"moon_shard", "moon shard":
 			resource_type = ResourceType.MOON_SHARD
 
+	build_organic_blocks()
 	update_visual()
 
 
@@ -109,7 +109,6 @@ func build_organic_blocks() -> void:
 	var block_count: int = get_block_count_for_max_amount()
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.seed = hash(str(global_position) + ":" + str(get_instance_id()) + ":" + str(max_amount) + ":" + str(resource_type))
-	rng.seed = hash(str(global_position) + ":" + str(max_amount) + ":" + str(resource_type))
 
 	var center: Vector2 = Vector2.ZERO
 
@@ -137,7 +136,11 @@ func build_organic_blocks() -> void:
 
 func get_block_count_for_max_amount() -> int:
 	var amount_ratio: float = clampf(float(max_amount) / 16.0, 0.0, 1.0)
-	return clampi(int(round(lerp(float(MIN_BLOCK_COUNT), float(MAX_BLOCK_COUNT), amount_ratio))), MIN_BLOCK_COUNT, MAX_BLOCK_COUNT)
+	return clampi(
+		int(round(lerp(float(MIN_BLOCK_COUNT), float(MAX_BLOCK_COUNT), amount_ratio))),
+		MIN_BLOCK_COUNT,
+		MAX_BLOCK_COUNT
+	)
 
 
 func update_visual() -> void:
@@ -146,7 +149,6 @@ func update_visual() -> void:
 		ratio = clampf(float(amount) / float(max_amount), 0.0, 1.0)
 
 	if not visuals_initialized or blocks.is_empty():
-	if blocks.is_empty():
 		return
 
 	var base_color: Color = get_base_color()
@@ -165,7 +167,6 @@ func update_visual() -> void:
 	if amount > 0:
 		visible_blocks = maxi(1, int(ceil(ratio * float(blocks.size()))))
 
-	for index in range(blocks.size()):
 	for index: int in range(blocks.size()):
 		var block: ColorRect = blocks[index]
 		if block == null:
@@ -178,7 +179,6 @@ func update_visual() -> void:
 		var tint_offset: float = 0.0
 		if index < block_tint_offsets.size():
 			tint_offset = float(block_tint_offsets[index])
-			tint_offset = block_tint_offsets[index]
 
 		if tint_offset >= 0.0:
 			block.color = final_color.lightened(tint_offset)
