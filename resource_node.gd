@@ -136,6 +136,7 @@ func build_organic_blocks() -> void:
 
 func get_block_count_for_max_amount() -> int:
 	var amount_ratio: float = clampf(float(max_amount) / 16.0, 0.0, 1.0)
+	return clampi(int(round(lerp(float(MIN_BLOCK_COUNT), float(MAX_BLOCK_COUNT), amount_ratio))), MIN_BLOCK_COUNT, MAX_BLOCK_COUNT)
 	return clampi(
 		int(round(lerp(float(MIN_BLOCK_COUNT), float(MAX_BLOCK_COUNT), amount_ratio))),
 		MIN_BLOCK_COUNT,
@@ -167,6 +168,7 @@ func update_visual() -> void:
 	if amount > 0:
 		visible_blocks = maxi(1, int(ceil(ratio * float(blocks.size()))))
 
+	for index in range(blocks.size()):
 	for index: int in range(blocks.size()):
 		var block: ColorRect = blocks[index]
 		if block == null:
