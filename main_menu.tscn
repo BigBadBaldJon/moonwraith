@@ -1,0 +1,114 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_5tp20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.95, 0.95, 0.95, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5tp20")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.07, 0.11, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_main")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "MoonWraiths"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Survive each night. Build. Harvest. Defend."
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsPanel" type="PanelContainer" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_main")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/OptionsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="OptionsTitle" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="FullscreenCheck" type="CheckButton" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 6.0
+step = 1.0
+value = 0.0
+
+[node name="VolumeValueLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume: 0 dB"
+
+[node name="BackButton" type="Button" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Back"
