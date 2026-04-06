@@ -48,6 +48,7 @@ func _sync_settings_to_ui() -> void:
 	if master_bus_index >= 0:
 		volume_slider.value = AudioServer.get_bus_volume_db(master_bus_index)
 
+	volume_value_label.modulate = Color(0.08, 0.1, 0.15, 1.0)
 	_update_volume_label(volume_slider.value)
 
 

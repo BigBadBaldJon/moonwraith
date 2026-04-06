@@ -60,6 +60,12 @@ enum ResourceTier {BASIC, UNCOMMON, RARE, EXOTIC}
 @onready var range_button: Button = $HudLayer/Hud/UpgradePanel/VBox/RangeButton
 @onready var close_label: Label = $HudLayer/Hud/UpgradePanel/VBox/CloseLabel
 
+@onready var pause_layer: CanvasLayer = $PauseLayer
+@onready var pause_panel: PanelContainer = $PauseLayer/PausePanel
+@onready var resume_button: Button = $PauseLayer/PausePanel/VBox/ResumeButton
+@onready var pause_main_menu_button: Button = $PauseLayer/PausePanel/VBox/MainMenuButton
+@onready var pause_quit_button: Button = $PauseLayer/PausePanel/VBox/QuitButton
+
 var tower_scene: PackedScene = preload("res://tower.tscn")
 var spawn_point_scene: PackedScene = preload("res://spawn_point.tscn")
 var basic_resource_scene: PackedScene = preload("res://resource_node.tscn")
@@ -101,6 +107,12 @@ func _ready() -> void:
 	upgrade_panel.visible = false
 	close_label.text = "Press U to close"
 
+	pause_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	pause_panel.visible = false
+	resume_button.pressed.connect(_on_resume_button_pressed)
+	pause_main_menu_button.pressed.connect(_on_pause_main_menu_button_pressed)
+	pause_quit_button.pressed.connect(_on_pause_quit_button_pressed)
+
 	damage_button.pressed.connect(_on_damage_button_pressed)
 	attack_speed_button.pressed.connect(_on_attack_speed_button_pressed)
 	move_speed_button.pressed.connect(_on_move_speed_button_pressed)
@@ -112,6 +124,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	handle_pause_menu_toggle()
+
+	if get_tree().paused:
+		return
+
 	phase_time_left -= delta
 
 	if phase_time_left < 0.0:
@@ -124,6 +141,9 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if get_tree().paused:
+		return
+
 	if night_director != null:
 		night_director.set_active_spawn_point(current_spawn_point)
 
@@ -577,6 +597,31 @@ func handle_upgrade_panel_toggle() -> void:
 		upgrade_panel.visible = not upgrade_panel.visible
 
 
+func handle_pause_menu_toggle() -> void:
+	if pause_panel.visible:
+		return
+
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause_game()
+
+
+func pause_game() -> void:
+	if get_tree().paused:
+		return
+
+	upgrade_panel.visible = false
+	pause_panel.visible = true
+	get_tree().paused = true
+
+
+func unpause_game() -> void:
+	if not get_tree().paused:
+		return
+
+	get_tree().paused = false
+	pause_panel.visible = false
+
+
 func handle_player_death_state() -> void:
 	if not player.is_dead:
 		return
@@ -630,6 +675,20 @@ func _on_max_health_button_pressed() -> void:
 
 func _on_range_button_pressed() -> void:
 	player.spend_point_on_range()
+
+
+func _on_resume_button_pressed() -> void:
+	unpause_game()
+
+
+func _on_pause_main_menu_button_pressed() -> void:
+	unpause_game()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+
+func _on_pause_quit_button_pressed() -> void:
+	unpause_game()
+	get_tree().quit()
 
 
 func can_place_tower_at(position: Vector2, min_distance: float = 70.0) -> bool:
