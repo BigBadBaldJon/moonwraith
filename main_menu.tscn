@@ -8,12 +8,14 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
+bg_color = Color(0.93, 0.95, 0.99, 0.98)
 bg_color = Color(0.12, 0.13, 0.18, 0.96)
 bg_color = Color(0.95, 0.95, 0.95, 0.95)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+border_color = Color(0.28, 0.34, 0.5, 1)
 border_color = Color(0.32, 0.38, 0.56, 1)
 border_color = Color(0.1, 0.1, 0.1, 1)
 corner_radius_top_left = 8
@@ -100,11 +102,13 @@ layout_mode = 2
 text = "MoonWraiths"
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
 layout_mode = 2
 text = "Survive each night. Build. Harvest. Defend."
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.14, 0.16, 0.22, 1)
 
 [node name="PlayButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
 layout_mode = 2
@@ -146,15 +150,18 @@ layout_mode = 2
 text = "Options"
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 
 [node name="FullscreenCheck" type="CheckButton" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
 text = "Fullscreen"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 
 [node name="VolumeLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
 text = "Master Volume"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 
 [node name="VolumeSlider" type="HSlider" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
@@ -166,6 +173,7 @@ value = 0.0
 [node name="VolumeValueLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
 text = "Master Volume: 0 dB"
+theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 
 [node name="BackButton" type="Button" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
