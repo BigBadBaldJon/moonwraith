@@ -199,15 +199,19 @@ layout_mode = 2
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="ResumeButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=475901822]
 layout_mode = 2
 text = "Resume"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenuButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=206506875]
 layout_mode = 2
 text = "Main Menu"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="QuitButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=1608027417]
 layout_mode = 2
 text = "Quit"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
