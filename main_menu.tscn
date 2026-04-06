@@ -1,0 +1,116 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.1, 0.14, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "MoonWraiths"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Survive each night. Build. Harvest. Defend."
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsPanel" type="PanelContainer" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/OptionsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="OptionsTitle" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+
+[node name="FullscreenCheck" type="CheckButton" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 6.0
+step = 1.0
+value = 0.0
+
+[node name="VolumeValueLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Master Volume: 0 dB"
+
+[node name="KeyMappingsLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Key Mappings"
+
+[node name="MappingScroll" type="ScrollContainer" parent="CenterContainer/OptionsPanel/VBox"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MappingsContainer" type="VBoxContainer" parent="CenterContainer/OptionsPanel/VBox/MappingScroll"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RemapHintLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Click a mapping button to remap. Press Esc to cancel remap."
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="CenterContainer/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Back"
