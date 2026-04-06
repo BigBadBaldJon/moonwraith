@@ -1,5 +1,8 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_5tp20"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
@@ -75,6 +78,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
 script = ExtResource("1_5tp20")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -85,6 +91,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.08, 0.1, 0.14, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
 color = Color(0.05, 0.06, 0.1, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -99,6 +108,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
 custom_minimum_size = Vector2(620, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
@@ -139,6 +154,15 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 [node name="QuitButton" type="Button" parent="CenterContainer/MainPanel/VBox"]
 layout_mode = 2
 text = "Quit"
+
+[node name="OptionsPanel" type="PanelContainer" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/OptionsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
 theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
@@ -187,6 +211,9 @@ theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 [node name="KeyMappingsLabel" type="Label" parent="CenterContainer/OptionsPanel/VBox"]
 layout_mode = 2
 text = "Key Mappings"
+
+[node name="MappingScroll" type="ScrollContainer" parent="CenterContainer/OptionsPanel/VBox"]
+custom_minimum_size = Vector2(0, 280)
 theme_override_colors/font_color = Color(0.08, 0.1, 0.15, 1)
 
 [node name="MappingScroll" type="ScrollContainer" parent="CenterContainer/OptionsPanel/VBox"]
