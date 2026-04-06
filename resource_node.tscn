@@ -12,35 +12,3 @@ script = ExtResource("1_xg62s")
 shape = SubResource("RectangleShape2D_70pm0")
 
 [node name="Visual" type="Node2D" parent="." unique_id=8880650]
-
-[node name="Cube1" type="ColorRect" parent="Visual" unique_id=791867366]
-custom_minimum_size = Vector2(12, 12)
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 2.0
-offset_bottom = 2.0
-color = Color(0.05882353, 0.9137255, 0.08627451, 1)
-
-[node name="Cube2" type="ColorRect" parent="Visual" unique_id=151473439]
-custom_minimum_size = Vector2(12, 12)
-offset_left = 10.0
-offset_top = -10.0
-offset_right = 22.0
-offset_bottom = 2.0
-color = Color(0.05882353, 0.9137255, 0.08627451, 1)
-
-[node name="Cube3" type="ColorRect" parent="Visual" unique_id=334693775]
-custom_minimum_size = Vector2(12, 12)
-offset_left = -10.0
-offset_top = 10.0
-offset_right = 2.0
-offset_bottom = 22.0
-color = Color(0.05882353, 0.9137255, 0.08627451, 1)
-
-[node name="Cube4" type="ColorRect" parent="Visual" unique_id=188332563]
-custom_minimum_size = Vector2(12, 12)
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 22.0
-offset_bottom = 22.0
-color = Color(0.05882353, 0.9137255, 0.08627451, 1)
