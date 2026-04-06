@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://01npsb7meen3"]
+
+[ext_resource type="Script" uid="uid://chfavgoxf78mv" path="res://spawn_point.gd" id="1_00gca"]
+
+[node name="SpawnPoint" type="StaticBody2D" unique_id=1568303277]
+script = ExtResource("1_00gca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732723535]

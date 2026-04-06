@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0ask0sxkyr64"]
+
+[ext_resource type="Script" uid="uid://36jqhmja25q1" path="res://monster.gd" id="1_s3gyj"]
+[ext_resource type="AudioStream" uid="uid://crxwfljvaudcn" path="res://Beast Death 1.mp3" id="2_mrqeg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3gyj"]
+radius = 20.0
+
+[node name="Monster" type="CharacterBody2D" unique_id=1328417851]
+script = ExtResource("1_s3gyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847430233]
+shape = SubResource("CircleShape2D_s3gyj")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=38611608]
+stream = ExtResource("2_mrqeg")
+volume_db = -6.0

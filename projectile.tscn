@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://43vrrhykpbe7"]
+
+[ext_resource type="Script" uid="uid://cymljv03lyirq" path="res://projectile.gd" id="1_a85iw"]
+[ext_resource type="AudioStream" uid="uid://ctcx20vtclq6r" path="res://Impact 1.mp3" id="2_qxf0c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akgne"]
+radius = 4.0
+
+[node name="Projectile" type="Area2D" unique_id=1822485722]
+script = ExtResource("1_a85iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993662733]
+shape = SubResource("CircleShape2D_akgne")
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="." unique_id=1626139214]
+stream = ExtResource("2_qxf0c")
+volume_db = -8.0
+max_polyphony = 4

@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://c3da55t5x5jfx"]
+
+[ext_resource type="Script" uid="uid://c8lq33ip5l4e2" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://dxtdmv7yxsnbr" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://crmbsyivb5h6i" path="res://grid_background.gd" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://b6jfrx0rl2ib1" path="res://ChatGPT Image Mar 14, 2026, 07_23_56 PM.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cf71mc5ykaa7v" path="res://night_director.gd" id="5_lquwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Main" type="Node2D" unique_id=617473191]
+script = ExtResource("1_0xm2m")
+
+[node name="GridBackground" type="Node2D" parent="." unique_id=1363310887]
+script = ExtResource("2_1bvp3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=337234562]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=950032015]
+position = Vector2(400, 300)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1796884409]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=994869810]
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=1640868061]
+energy = 1.13
+texture = ExtResource("4_1bvp3")
+texture_scale = 1.9
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1950362149]
+
+[node name="Hud" type="CanvasLayer" parent="HudLayer" unique_id=1131104363]
+
+[node name="GameOverLabel" type="Label" parent="HudLayer/Hud" unique_id=182193633]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradePanel" type="PanelContainer" parent="HudLayer/Hud" unique_id=1912294904]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -20.0
+offset_right = 68.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
+
+[node name="VBox" type="VBoxContainer" parent="HudLayer/Hud/UpgradePanel" unique_id=1084375617]
+layout_mode = 2
+
+[node name="PointsLabel" type="Label" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=859208113]
+layout_mode = 2
+text = "Upgrade Points: 0"
+
+[node name="DamageButton" type="Button" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=1188667470]
+layout_mode = 2
+text = "+ Damage"
+
+[node name="AttackSpeedButton" type="Button" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=1580958179]
+layout_mode = 2
+text = "+ Attack Speed"
+
+[node name="MoveSpeedButton" type="Button" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=110197191]
+layout_mode = 2
+text = "+ Move Speed"
+
+[node name="MaxHealthButton" type="Button" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=1321891573]
+layout_mode = 2
+text = "+ Max Health"
+
+[node name="RangeButton" type="Button" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=1294614501]
+layout_mode = 2
+text = "+ Range"
+
+[node name="CloseLabel" type="Label" parent="HudLayer/Hud/UpgradePanel/VBox" unique_id=624994122]
+layout_mode = 2
+text = "Press U to close"
+
+[node name="TopLeftPanel" type="PanelContainer" parent="HudLayer/Hud" unique_id=796241593]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="TopLeftUI" type="VBoxContainer" parent="HudLayer/Hud/TopLeftPanel" unique_id=1361387368]
+layout_mode = 2
+
+[node name="NightLabel" type="Label" parent="HudLayer/Hud/TopLeftPanel/TopLeftUI" unique_id=576088918]
+layout_mode = 2
+
+[node name="PhaseLabel" type="Label" parent="HudLayer/Hud/TopLeftPanel/TopLeftUI" unique_id=410044756]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="HudLayer/Hud/TopLeftPanel/TopLeftUI" unique_id=1551673504]
+layout_mode = 2
+
+[node name="XpLabel" type="Label" parent="HudLayer/Hud/TopLeftPanel/TopLeftUI" unique_id=642791426]
+layout_mode = 2
+
+[node name="HealthPanel" type="PanelContainer" parent="HudLayer/Hud" unique_id=1050414897]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="HealthLabel" type="Label" parent="HudLayer/Hud/HealthPanel" unique_id=1411539756]
+layout_mode = 2
+
+[node name="NightDirector" type="Node" parent="." unique_id=1769521780]
+script = ExtResource("5_lquwl")
