@@ -28,12 +28,19 @@ var amount: int = 0
 
 var blocks: Array[ColorRect] = []
 var block_tint_offsets: Array[float] = []
+var visuals_initialized: bool = false
 
 
 func _ready() -> void:
 	add_to_group("resource_nodes")
 	add_to_group("blocking_objects")
 	amount = max_amount
+	call_deferred("initialize_visuals")
+
+
+func initialize_visuals() -> void:
+	build_organic_blocks()
+	visuals_initialized = true
 	build_organic_blocks()
 	update_visual()
 
@@ -101,6 +108,7 @@ func build_organic_blocks() -> void:
 
 	var block_count: int = get_block_count_for_max_amount()
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	rng.seed = hash(str(global_position) + ":" + str(get_instance_id()) + ":" + str(max_amount) + ":" + str(resource_type))
 	rng.seed = hash(str(global_position) + ":" + str(max_amount) + ":" + str(resource_type))
 
 	var center: Vector2 = Vector2.ZERO
@@ -137,6 +145,7 @@ func update_visual() -> void:
 	if max_amount > 0:
 		ratio = clampf(float(amount) / float(max_amount), 0.0, 1.0)
 
+	if not visuals_initialized or blocks.is_empty():
 	if blocks.is_empty():
 		return
 
