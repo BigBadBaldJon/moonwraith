@@ -41,6 +41,7 @@ func _ready() -> void:
 func initialize_visuals() -> void:
 	build_organic_blocks()
 	visuals_initialized = true
+	build_organic_blocks()
 	update_visual()
 
 
@@ -108,6 +109,7 @@ func build_organic_blocks() -> void:
 	var block_count: int = get_block_count_for_max_amount()
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.seed = hash(str(global_position) + ":" + str(get_instance_id()) + ":" + str(max_amount) + ":" + str(resource_type))
+	rng.seed = hash(str(global_position) + ":" + str(max_amount) + ":" + str(resource_type))
 
 	var center: Vector2 = Vector2.ZERO
 
@@ -144,6 +146,7 @@ func update_visual() -> void:
 		ratio = clampf(float(amount) / float(max_amount), 0.0, 1.0)
 
 	if not visuals_initialized or blocks.is_empty():
+	if blocks.is_empty():
 		return
 
 	var base_color: Color = get_base_color()
