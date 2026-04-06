@@ -165,6 +165,7 @@ func update_visual() -> void:
 	if amount > 0:
 		visible_blocks = maxi(1, int(ceil(ratio * float(blocks.size()))))
 
+	for index in range(blocks.size()):
 	for index: int in range(blocks.size()):
 		var block: ColorRect = blocks[index]
 		if block == null:
@@ -176,6 +177,7 @@ func update_visual() -> void:
 
 		var tint_offset: float = 0.0
 		if index < block_tint_offsets.size():
+			tint_offset = float(block_tint_offsets[index])
 			tint_offset = block_tint_offsets[index]
 
 		if tint_offset >= 0.0:
