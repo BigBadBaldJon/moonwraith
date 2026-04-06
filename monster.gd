@@ -26,6 +26,8 @@ const TARGET_RADIUS_INFLUENCE: float = 0.35
 const STRUCTURE_TARGET_RADIUS_INFLUENCE: float = 0.60
 const STRUCTURE_ATTACK_RANGE_BONUS: float = 10.0
 
+const HEALTH_BAR_SCRIPT: GDScript = preload("res://health_bar.gd")
+
 @export var WORLD_SIZE: Vector2 = Vector2(2400.0, 2400.0)
 
 enum MonsterType {RUNNER, BASIC, BRUTE}
@@ -72,11 +74,15 @@ var xp_orb_scene: PackedScene = preload("res://xp_orb.tscn")
 var death_tween_done: bool = false
 var death_sound_done: bool = false
 
+var health_bar: HealthBar = null
+
 
 func _ready() -> void:
 	add_to_group("monsters")
 	last_stuck_check_position = global_position
 	pick_new_roam_target()
+	ensure_health_bar()
+	update_health_bar()
 	queue_redraw()
 
 
@@ -152,6 +158,7 @@ func configure_for_night(night_number: int, type: MonsterType) -> void:
 			attack_knockback_force = 300.0
 
 	health = max_health
+	update_health_bar()
 	queue_redraw()
 
 
@@ -602,11 +609,37 @@ func get_separation_velocity() -> Vector2:
 	return push.normalized() * SEPARATION_STRENGTH
 
 
+
+func ensure_health_bar() -> void:
+	if health_bar != null and is_instance_valid(health_bar):
+		return
+
+	if has_node("HealthBar"):
+		health_bar = get_node("HealthBar") as HealthBar
+	else:
+		var new_health_bar: Node2D = Node2D.new()
+		new_health_bar.name = "HealthBar"
+		new_health_bar.set_script(HEALTH_BAR_SCRIPT)
+		add_child(new_health_bar)
+		health_bar = new_health_bar as HealthBar
+
+	if health_bar != null:
+		health_bar.always_visible = true
+
+
+func update_health_bar() -> void:
+	ensure_health_bar()
+	if health_bar != null:
+		health_bar.y_offset = -30.0 * body_scale
+		health_bar.set_health(health, max_health)
+
+
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
 
 	health -= amount
+	update_health_bar()
 
 	if health <= 0.0:
 		health = 0.0
