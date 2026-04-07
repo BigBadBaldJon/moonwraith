@@ -178,6 +178,9 @@ script = ExtResource("5_lquwl")
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
 [node name="PausePanel" type="PanelContainer" parent="PauseLayer"]
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1700872104]
+
+[node name="PausePanel" type="PanelContainer" parent="PauseLayer" unique_id=189702342]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -196,22 +199,29 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="PauseLayer/PausePanel/VBox"]
+[node name="VBox" type="VBoxContainer" parent="PauseLayer/PausePanel" unique_id=1881000044]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PauseLayer/PausePanel/VBox" unique_id=1520439812]
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="ResumeButton" type="Button" parent="PauseLayer/PausePanel/VBox"]
+[node name="ResumeButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=475901822]
 layout_mode = 2
 text = "Resume"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenuButton" type="Button" parent="PauseLayer/PausePanel/VBox"]
+[node name="MainMenuButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=206506875]
 layout_mode = 2
 text = "Main Menu"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="QuitButton" type="Button" parent="PauseLayer/PausePanel/VBox"]
+[node name="QuitButton" type="Button" parent="PauseLayer/PausePanel/VBox" unique_id=1608027417]
 layout_mode = 2
 text = "Quit"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
